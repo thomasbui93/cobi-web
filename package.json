@@ -55,7 +55,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --coverage --env=jsdom --watchAll=false",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "clean-code": "tslint -c tslint.json -p tsconfig.json --fix"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.14",
