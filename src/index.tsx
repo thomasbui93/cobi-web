@@ -1,11 +1,22 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+import { ConnectedRouter } from 'connected-react-router'
+import * as React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux' 
+import 'reset-css'
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root') as HTMLElement
-);
-registerServiceWorker();
+import App from './App'
+import registerServiceWorker from './registerServiceWorker'
+import configureStore, { history } from './store'
+
+const store = configureStore()
+const target = document.getElementById('root')
+
+render(
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
+  </Provider>,
+  target
+)
+registerServiceWorker()
