@@ -94,6 +94,7 @@ module.exports = {
       '.json',
       '.web.jsx',
       '.jsx',
+      '.scss'
     ],
     alias: {
       
@@ -200,6 +201,20 @@ module.exports = {
                 },
               },
             ],
+          },
+          {
+            test: /\.scss$/,
+            include: paths.appSrc,
+            loaders: [
+              require.resolve('style-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                },
+              },
+              require.resolve('sass-loader')
+            ]
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
