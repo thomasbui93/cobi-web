@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
 import { InterfaceMenuItem, getMenuItems } from '../../services/menu'
+import { Menu } from './Menu';
 
 export interface InterfaceNavigationProps {
   setNavigation: (isExpanded: boolean) => void,
@@ -13,24 +13,6 @@ export class Navigation extends React.Component<InterfaceNavigationProps>{
     this.toggleNavigation = this.toggleNavigation.bind(this)
   }
 
-  public renderMenuItem(menuItem:any) {
-    return <div className='menu-item' key={menuItem.key}>
-      <div className='menu-item__link'>
-        <Link to={menuItem.url}>{menuItem.title}</Link>
-      </div>
-      {
-        menuItem.children && menuItem.children.length > 0 ?
-        <div className='menu-item__list'>
-          { menuItem.children.map(this.renderMenuItem.bind(this)) }
-        </div> : ''
-      }
-    </div>
-  }
-
-  public renderMenu(menuItems:any) {
-    return menuItems.map(this.renderMenuItem.bind(this))
-  }
-
   public toggleNavigation() {
     this.props.setNavigation(!this.props.isExpanded)
   }
@@ -39,9 +21,16 @@ export class Navigation extends React.Component<InterfaceNavigationProps>{
     const menuItems: InterfaceMenuItem[] = getMenuItems()
     return (
       <div className={`navigation ${this.props.isExpanded ? '' : 'is-collapsed'}`}>
-        <div onClick={this.toggleNavigation}>Toggle</div>
-        <div>
-        { menuItems.length > 0 ? this.renderMenu(menuItems) : '' }
+        <div className='navigation__header'>
+          <div className={`toggle hamburger hamburger--squeeze ${this.props.isExpanded ? 'is-active': ''}`}
+            onClick={this.toggleNavigation}>
+            <div className='hamburger-box'>
+              <div className='hamburger-inner'/>
+            </div>
+          </div>
+        </div>
+        <div className='navigation__content'>
+        { menuItems.length > 0 ? <Menu menuItems={menuItems}/> : '' }
         </div>
       </div>
     )

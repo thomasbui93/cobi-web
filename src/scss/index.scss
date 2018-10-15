@@ -3,5 +3,10 @@
 @import "customized";
 @import "~node_modules/bulma/sass/utilities/_all.sass";
 @import "~node_modules/bulma/sass/base/_all.sass";
+@import "~node_modules/hamburgers/_sass/hamburgers/hamburgers.scss";
 
-@import "global"
+@import "global";
+
+@import "components/navigation";
+@import "components/menu";
+@import "components/layout";
