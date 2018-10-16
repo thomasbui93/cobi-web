@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { InterfaceMenuItem } from '../../services/menu'
 
@@ -23,7 +24,7 @@ export class Menu extends React.Component<InterfaceMenuProps, InterfaceMenuState
 
   public getInitialStateFromProps() {
     const menuItemsState = {}
-    this.props.menuItems.forEach(({key}: {key: string}) => {
+    this.props.menuItems.forEach(({ key }: { key: string }) => {
       menuItemsState[key] = false
     })
     return menuItemsState
@@ -38,7 +39,7 @@ export class Menu extends React.Component<InterfaceMenuProps, InterfaceMenuState
         {
           this.hasChildren(menuItem) ?
             <div className='menu-item__toggle' onClick={this.toggleMenuItem.bind(this, key)}>
-              {isOpen ? '-' : '+'}
+              {isOpen ? <FontAwesomeIcon icon='plus' /> : <FontAwesomeIcon icon='minus' />}
             </div> : ''
         }
       </div>
