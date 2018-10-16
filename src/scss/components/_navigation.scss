@@ -32,7 +32,11 @@ $menu-item-height: 2.5rem !default;
     position: relative;
     float: right;
     display: flex;
-    margin-top: 4px;
+    height: 3rem;
+    padding: 14px 10px 10px 10px;
+    &.is-active {
+      background-color: darken($color: $primary, $amount: 10%)
+    }
   }
 }
 

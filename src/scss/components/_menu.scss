@@ -63,11 +63,15 @@ $menu-list-width: 300px !default;
       }
     }
 
-    &:hover .menu-item__list {
+    &:hover &__list {
       display: block;
       position: absolute;
       background-color: lighten($color: $primary, $amount: 10%);
       min-width: $menu-list-width;
+    }
+
+    &:hover > &__link a {
+      color: white;
     }
   }
 }
