@@ -12,11 +12,9 @@ export class Navigation extends React.Component<InterfaceNavigationProps>{
     super(props)
     this.toggleNavigation = this.toggleNavigation.bind(this)
   }
-
   public toggleNavigation() {
     this.props.setNavigation(!this.props.isExpanded)
   }
-
   public render() {
     const menuItems: InterfaceMenuItem[] = getMenuItems()
     return (

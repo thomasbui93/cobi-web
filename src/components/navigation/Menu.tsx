@@ -14,36 +14,39 @@ export interface InterfaceMenuProps {
 }
 
 export class Menu extends React.Component<InterfaceMenuProps, InterfaceMenuState>{
-  public state = {
-    menuItems: {}
+  constructor(props: InterfaceMenuProps) {
+    super(props)
+    this.state = {
+      menuItems: this.getInitialStateFromProps()
+    }
   }
 
   public getInitialStateFromProps() {
-    const menuItemsState = new Map<string, boolean>()
+    const menuItemsState = {}
     this.props.menuItems.forEach(({key}: {key: string}) => {
-      menuItemsState.set(key, false)
+      menuItemsState[key] = false
     })
-    return Array.from(menuItemsState)
+    return menuItemsState
   }
 
   public renderMenuItem(menuItem: InterfaceMenuItem) {
-    const {key} = menuItem
+    const { key } = menuItem
     const isOpen = this.state.menuItems[key]
     return <div className='menu-item' key={key}>
-      <div className={`menu-item__link ${isOpen ? 'is-active': ''}`}>
+      <div className={`menu-item__link ${isOpen ? 'is-active' : ''}`}>
         <Link to={menuItem.url}>{menuItem.title}</Link>
         {
-          this.hasChildren(menuItem) ? 
+          this.hasChildren(menuItem) ?
             <div className='menu-item__toggle' onClick={this.toggleMenuItem.bind(this, key)}>
-              { isOpen ? '-' : '+'}
+              {isOpen ? '-' : '+'}
             </div> : ''
         }
       </div>
       {
         this.hasChildren(menuItem) ?
-        <div className='menu-item__list'>
-          { menuItem.children!.map(this.renderMenuItem.bind(this)) }
-        </div> : ''
+          <div className='menu-item__list'>
+            {menuItem.children!.map(this.renderMenuItem.bind(this))}
+          </div> : ''
       }
     </div>
   }
@@ -52,7 +55,7 @@ export class Menu extends React.Component<InterfaceMenuProps, InterfaceMenuState
     return menuItem.children && menuItem.children.length > 0
   }
 
-  public toggleMenuItem(key: string){
+  public toggleMenuItem(key: string) {
     const menuItems = this.state.menuItems;
     menuItems[key] = !menuItems[key]
     this.setState({
@@ -60,7 +63,7 @@ export class Menu extends React.Component<InterfaceMenuProps, InterfaceMenuState
     })
   }
 
-  public renderMenu(menuItems:InterfaceMenuItem[]) {
+  public renderMenu(menuItems: InterfaceMenuItem[]) {
     return menuItems.map(this.renderMenuItem.bind(this))
   }
 
