@@ -3,8 +3,18 @@ $family-sans-serif: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sa
 
 // Update some of Bulma's component variables
 $body-background-color: #FFF;
-$text: black;
-$control-border-width: 2px;
-$input-border-color: transparent;
-$input-shadow: none;
-$radius: 0;
+$text                 : black;
+$control-border-width : 2px;
+$input-border-color   : transparent;
+$input-shadow         : none;
+$radius               : 0;
+$primary              : #2e8555;
+
+// Hamburgers menu
+$hamburger-layer-color  : #FFF;
+$hamburger-padding-x    : 10px;
+$hamburger-padding-y    : 10px;
+$hamburger-layer-width  : 30px;
+$hamburger-layer-height : 3px;
+$hamburger-hover-opacity: 1;
+$hamburger-layer-spacing: 7px;
