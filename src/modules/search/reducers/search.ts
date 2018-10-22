@@ -1,6 +1,6 @@
 import { InterfaceAction } from '../../../common/type/InterfaceAction'
-import { composeErrorState, composeLoadingState } from 'src/common/utils/state';
-import { getDoneAction, getErrorAction, getRequestAction } from 'src/common/utils/action';
+import { composeErrorState, composeLoadingState } from '../../../common/utils/state';
+import { getDoneAction, getErrorAction, getRequestAction } from '../../../common/utils/action';
 import { searchActionType } from '../actions/type';
 
 export interface InterfaceSearchState {

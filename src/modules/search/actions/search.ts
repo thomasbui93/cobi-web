@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions'
-import { getDoneAction, getErrorAction, getRequestAction } from 'src/common/utils/action'
+import { getDoneAction, getErrorAction, getRequestAction } from '../../../common/utils/action'
 import { searchActionType } from '../actions/type'
 
 export const requestList = (requestInfo?: any) => {

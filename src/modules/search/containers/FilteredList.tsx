@@ -3,7 +3,7 @@ import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { InterfaceFilterTextProps, FilterText } from '../components/filters/FilterText';
 import { InterfaceFilterRadioProps, FilterRadio } from '../components/filters/FilterRadio';
-import { Loader } from 'src/components/core/Loader/Loader';
+import { Loader } from '../../../components/core/Loader/Loader';
 import { requestList } from '../actions/search';
 import { InterfaceSearchState } from '../reducers/search';
 import { SearchItem } from '../components/item/SearchItem';

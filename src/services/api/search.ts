@@ -2,8 +2,10 @@ export const searchApi = async (requestInfo?: any) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve({
-        sorts: requestInfo && requestInfo.sorts ? requestInfo.sorts : [],
-        filters: requestInfo && requestInfo.filters ? requestInfo.filters : [],
+        meta: {
+          total: 1000,
+          page: requestInfo.page
+        },
         items: [
           {
             title: 'Category Title',
