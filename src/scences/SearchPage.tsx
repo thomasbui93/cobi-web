@@ -1,7 +1,8 @@
 import * as React from 'react'
+import FilteredList from 'src/modules/search/containers/FilteredList';
 
 export const SearchPage = () => (
   <div>
-    Search Page
+    <FilteredList filters={[]} />
   </div>
 )
