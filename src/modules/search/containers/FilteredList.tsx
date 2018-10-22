@@ -43,7 +43,7 @@ export class FilteredList extends React.Component<InterfaceFilteredListProps>{
   }
 
   public renderList() {
-    this.props.items.map(item => <SearchItem item={item} key={item.key}/>)
+    return this.props.items.map(item => <SearchItem item={item} key={item.key}/>)
   }
 
   public render() {
@@ -53,7 +53,11 @@ export class FilteredList extends React.Component<InterfaceFilteredListProps>{
           {this.props.filters.map(this.renderFilter.bind(this))}
         </div>
         <div className='filtered-list__list'>
-          {this.props.isLoading ? <Loader /> : '...'}
+          { this.props.error ? 'Error while loading the search result': ''}
+          { this.props.isLoading ? <Loader /> : ''}
+          { 
+            this.props.items.map(item => <SearchItem  item={item} key={item.key}/>)
+          }
         </div>
       </div>
     )

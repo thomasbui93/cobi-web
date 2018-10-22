@@ -7,7 +7,7 @@ export interface InterfacePaginationProps {
 }
 
 export class Pagination extends React.Component<InterfacePaginationProps> {
-  public paginationSize:number = 2;
+  public paginationSize:number = 10;
   public getSmallestPagination(): number {
     return this.props.current - this.paginationSize > 0 ?
       this.props.current - this.paginationSize : 1

@@ -13,7 +13,10 @@ export const requestList = (requestInfo?: any) => {
 
 export const doneRequesting = createAction(
   getDoneAction(searchActionType.prefix),
-  ({ items }: {items: any[]}) => items
+  ({ items, meta }: { items: any[], meta: any }) => ({
+    items,
+    meta
+  })
 )
 
 export const failLoading = createAction(

@@ -22,7 +22,7 @@ export const searchReducer = (state = initialState, { type, payload }: Interface
         ...state,
         error: false,
         isLoading: false,
-        items: payload
+        items: payload.items
       }
     case getErrorAction(searchActionType.prefix):
       return composeErrorState(state)
