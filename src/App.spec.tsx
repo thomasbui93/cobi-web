@@ -13,6 +13,11 @@ it('renders without crashing', () => {
       items: [],
       error: false,
       isLoading: false
+    },
+    filter: {
+      isFilterLoading: false,
+      filters: [],
+      filterError: false
     }
   })
   ReactDOM.render(

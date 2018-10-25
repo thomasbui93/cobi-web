@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Button } from 'src/components/core/Button/Button';
+import { Button } from '../../../../components/core/Button/Button';
 
 export interface InterfaceFilterTextProps {
   label: string,

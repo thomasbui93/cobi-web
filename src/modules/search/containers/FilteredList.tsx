@@ -11,9 +11,9 @@ import { InterfaceFilterMultiProps } from '../components/filters/InterfaceFilter
 import { FilterToggle } from '../components/filters/FilterToggle';
 import { requestFilters } from '../actions/filter'
 import { InterfaceFilterState } from '../reducers/filter'
-import { InterfaceStoreState } from 'src/InterfaceStoreState';
-import { InputType } from 'zlib';
-import { updateQuery } from 'src/common/utils/query';
+import { InterfaceStoreState } from '../../../InterfaceStoreState';
+import { InputValueType } from '../components/filters/InterfaceFilterState'
+import { updateQuery } from '../../../common/utils/query';
 
 export enum FILTER_TYPE {
   TEXT = 'text',
@@ -26,13 +26,13 @@ export interface InterfaceFilterItem extends InterfaceFilterTextProps, Interface
 }
 
 export interface InterfaceFilteredListProps extends InterfaceFilterState, InterfaceSearchState {
-  applyFilter: (criteria: InputType[]) => any,
+  applyFilter: (criteria: InputValueType[]) => any,
   initList: () => any,
   initFilter: () => any
 }
 
 export interface InterfaceFilterListState {
-  appliedFilters: InputType[]
+  appliedFilters: InputValueType[]
 }
 
 export class FilteredList extends React.Component<InterfaceFilteredListProps, InterfaceFilterListState>{
@@ -117,7 +117,7 @@ export const mapStateToProps = ({ search, filter }: InterfaceStoreState ) => {
 
 export const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    applyFilter(criteria: InputType[] ) {
+    applyFilter(criteria: InputValueType[] ) {
       return dispatch(requestList(criteria))
     },
     initList() {
