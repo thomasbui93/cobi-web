@@ -8,7 +8,7 @@ export const history = createHistory()
 
 export default () => {
   const epicMiddleware = createEpicMiddleware()
-  const initialState: any = {}
+  const initialState = {}
   const enhancers: any = []
   const middleware = [
     epicMiddleware,

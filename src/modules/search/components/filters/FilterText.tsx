@@ -1,22 +1,35 @@
 import * as React from 'react'
+import { Button } from 'src/components/core/Button/Button';
 
 export interface InterfaceFilterTextProps {
-  title: string,
+  label: string,
+  name: string,
   initialValue: string,
-  onChange: any
+  onChange: (label: string, changedValue: any) => any
 }
 
 export class FilterText extends React.Component<InterfaceFilterTextProps> {
-  public onChange(event: any) {
-    this.props.onChange(this.props.title, event.target.value)
+  private inputValueRef : React.RefObject<HTMLInputElement>
+
+  constructor(props: InterfaceFilterTextProps) {
+    super(props)
+    this.inputValueRef = React.createRef()
+    this.onChange = this.onChange.bind(this)
+  }
+  public onChange() {
+    if (this.inputValueRef.current && this.inputValueRef.current.value) {
+      this.props.onChange(this.props.name, this.inputValueRef.current.value)
+    }
   }
   public render() {
     return (
       <div className='filter--text'>
-        <input type='text' 
+        <div>{this.props.label}</div>
+        <input type='text'
+          ref={this.inputValueRef}
           defaultValue={this.props.initialValue}
-          onChange={this.onChange}
           />
+        <Button onClick={this.onChange}>Apply</Button>
       </div>
     )
   }
