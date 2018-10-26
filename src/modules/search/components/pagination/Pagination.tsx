@@ -3,7 +3,7 @@ import * as React from 'react'
 export interface InterfacePaginationProps {
   current: number,
   last: number,
-  setPagination: (current: number) => any
+  setPagination: (current: number) => void
 }
 
 export class Pagination extends React.Component<InterfacePaginationProps> {

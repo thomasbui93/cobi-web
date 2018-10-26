@@ -30,8 +30,8 @@ export interface InterfaceFilterItem extends InterfaceFilterTextProps, Interface
 export interface InterfaceFilteredListProps extends InterfaceFilterState, InterfaceSearchState {
   initialAppliedFilters: InputValueType[],
   applyFilter: (criteria: InputValueType[]) => any,
-  initList: () => any,
-  initFilter: () => any
+  initList: () => void,
+  initFilter: () => void
 }
 
 export interface InterfaceFilterListState {
@@ -99,7 +99,7 @@ export class FilteredList extends React.Component<InterfaceFilteredListProps, In
   }
 
   public setPaginate(page: number) {
-    return this.applyFilter('page', page);
+    return this.applyFilter('page', page)
   }
 
   public render() {
@@ -141,13 +141,13 @@ export const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     applyFilter(criteria: InputValueType[]) {
       dispatch(push(updateQuery(criteria)))
-      return dispatch(requestList(criteria))
+      dispatch(requestList(criteria))
     },
     initList() {
-      return dispatch(requestList())
+      dispatch(requestList())
     },
     initFilter() {
-      return dispatch(requestFilters())
+      dispatch(requestFilters())
     }
   }
 }
