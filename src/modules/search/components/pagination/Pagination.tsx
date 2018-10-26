@@ -3,26 +3,26 @@ import * as React from 'react'
 export interface InterfacePaginationProps {
   current: number,
   last: number,
-  setPagination: any
+  setPagination: (current: number) => any
 }
 
 export class Pagination extends React.Component<InterfacePaginationProps> {
-  public paginationSize:number = 10;
+  public paginationSize: number = 5;
   public getSmallestPagination(): number {
     return this.props.current - this.paginationSize > 0 ?
-      this.props.current - this.paginationSize : 1
+      this.props.current - this.paginationSize : this.props.current
   }
 
   public getLargestPaginagtion(): number {
     return (this.props.current + this.paginationSize) < this.props.last ?
-    this.props.last : (this.props.current + this.paginationSize)
+    (this.props.current + this.paginationSize) : this.props.last
   }
 
   public getPaginationRange(): number[] {
     const smallest = this.getSmallestPagination()
     const largest = this.getLargestPaginagtion()
     const range: number[] = []
-    for (let i = smallest; i <= largest; i ++) {
+    for (let i = smallest; i <= largest; i++) {
       range.push(i);
     }
     return range
@@ -30,10 +30,10 @@ export class Pagination extends React.Component<InterfacePaginationProps> {
 
   public getPaginationItem(page: number) {
     const isCurrent = page === this.props.current
-    const className = isCurrent ? 'pagination-item is-active': 'pagination-item'
+    const className = isCurrent ? 'pagination-item is-active' : 'pagination-item'
     const clickAction = this.onClickFactory(this, page)
-    return <div className={className} onClick={clickAction}>
-        {page}
+    return <div className={className} onClick={clickAction} key={page}>
+      {page}
     </div>
   }
 
@@ -44,7 +44,7 @@ export class Pagination extends React.Component<InterfacePaginationProps> {
   public render() {
     return (
       <div className='pagination'>
-        { this.getPaginationRange().map(this.getPaginationItem.bind(this)) }
+        {this.getPaginationRange().map(this.getPaginationItem.bind(this))}
       </div>
     )
   }

@@ -18,6 +18,11 @@ it('renders without crashing', () => {
       isFilterLoading: false,
       filters: [],
       filterError: false
+    },
+    router: {
+      location: {
+        search: ''
+      }
     }
   })
   ReactDOM.render(

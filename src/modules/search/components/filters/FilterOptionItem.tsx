@@ -20,9 +20,9 @@ export class FilterOptionItem extends React.Component<InterfaceFilterOptionProps
 
   public render() {
     return <div
-      onClick={this.onClick} 
-      className={`filter-item__option ${this.props.isActive ? 'is-active': ''}`}>
-      { this.props.option.label }
+      onClick={this.onClick}
+      className={`filter-item__option ${this.props.isActive ? 'is-active' : ''}`}>
+      {this.props.option.label}
     </div>
   }
 }

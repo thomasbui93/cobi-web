@@ -16,11 +16,13 @@ export class FilterText extends React.Component<InterfaceFilterTextProps> {
     this.inputValueRef = React.createRef()
     this.onChange = this.onChange.bind(this)
   }
+
   public onChange() {
     if (this.inputValueRef.current && this.inputValueRef.current.value) {
       this.props.onChange(this.props.name, this.inputValueRef.current.value)
     }
   }
+
   public render() {
     return (
       <div className='filter--text'>

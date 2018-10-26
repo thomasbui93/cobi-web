@@ -6,7 +6,7 @@ import { FilterOptionItem } from './FilterOptionItem'
 
 export class FilterMultiSelect extends React.Component<InterfaceFilterMultiProps, InterfaceFilterState> {
   public state:InterfaceFilterState = {
-    currentValue: []
+    currentValue: this.props.initialValue.split(',')
   }
 
   constructor(props: InterfaceFilterMultiProps) {

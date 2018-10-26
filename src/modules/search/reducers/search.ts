@@ -7,12 +7,16 @@ export interface InterfaceSearchState {
   items: any[],
   isLoading: boolean,
   error: boolean,
+  page: number,
+  total: number
 }
 
 const initialState: InterfaceSearchState = {
   isLoading: false,
   items: [],
-  error: false
+  error: false,
+  page: 1,
+  total: 0
 }
 
 export const searchReducer = (state = initialState, { type, payload }: InterfaceAction): InterfaceSearchState => {
@@ -22,7 +26,9 @@ export const searchReducer = (state = initialState, { type, payload }: Interface
         ...state,
         error: false,
         isLoading: false,
-        items: payload.items
+        items: payload.items,
+        page: payload.meta.page,
+        total: payload.meta.total
       }
     case getErrorAction(searchActionType.prefix):
       return composeErrorState(state)
