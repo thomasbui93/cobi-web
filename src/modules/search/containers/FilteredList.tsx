@@ -1,22 +1,22 @@
 import * as React from 'react'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
-import { InterfaceFilterTextProps, FilterText } from '../components/filters/FilterText';
-import { FilterMultiSelect } from '../components/filters/FilterMultiSelect';
-import { Loader } from '../../../components/core/Loader/Loader';
-import { requestList } from '../actions/search';
-import { InterfaceSearchState } from '../reducers/search';
-import { SearchItem } from '../components/item/SearchItem';
+import { InterfaceFilterTextProps, FilterText } from '../components/filters/FilterText'
+import { FilterMultiSelect } from '../components/filters/FilterMultiSelect'
+import { Loader } from '../../../components/core/Loader/Loader'
+import { requestList } from '../actions/search'
+import { InterfaceSearchState } from '../reducers/search'
+import { SearchItem } from '../components/item/SearchItem'
 import { InterfaceFilterMultiProps } from '../components/filters/InterfaceFilterMultiProps'
-import { FilterToggle } from '../components/filters/FilterToggle';
+import { FilterToggle } from '../components/filters/FilterToggle'
 import { requestFilters } from '../actions/filter'
 import { InterfaceFilterState } from '../reducers/filter'
-import { InterfaceStoreState } from '../../../InterfaceStoreState';
+import { InterfaceStoreState } from '../../../InterfaceStoreState'
 import { InputValueType } from '../components/filters/InterfaceFilterState'
-import { updateQuery, getArrayOfQuery } from '../../../common/utils/query';
+import { updateQuery, getArrayOfQuery } from '../../../common/utils/query'
 import { push } from 'connected-react-router'
-import { Pagination } from '../components/pagination/Pagination';
-import { Button } from '../../../components/core/Button/Button';
+import { Pagination } from '../components/pagination/Pagination'
+import { Button } from '../../../components/core/Button/Button'
 
 export enum FILTER_TYPE {
   TEXT = 'text',
@@ -65,7 +65,7 @@ export class FilteredList extends React.Component<InterfaceFilteredListProps, In
   }
 
   public componentDidMount() {
-    const initialAppliedFilters = this.props.initialAppliedFilters;
+    const initialAppliedFilters = this.props.initialAppliedFilters
     this.setState({
       appliedFilters: initialAppliedFilters
     })
@@ -77,7 +77,7 @@ export class FilteredList extends React.Component<InterfaceFilteredListProps, In
   public applyFilter(label: string, value: any) {
     const appliedFilters = this.state.appliedFilters
     if (appliedFilters[label] === value) {
-      return;
+      return
     }
     if (typeof value === 'undefined') {
       delete appliedFilters[label]

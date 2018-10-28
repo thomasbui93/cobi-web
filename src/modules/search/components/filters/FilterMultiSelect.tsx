@@ -17,8 +17,8 @@ export class FilterMultiSelect extends React.Component<InterfaceFilterMultiProps
   }
 
   public onChange(value: InputValueType) {
-    const currentValue = new Set(this.state.currentValue);
-    currentValue.has(value) ? currentValue.delete(value): currentValue.add(value);
+    const currentValue = new Set(this.state.currentValue)
+    currentValue.has(value) ? currentValue.delete(value): currentValue.add(value)
     this.setState({
       currentValue: Array.from(currentValue)
     })

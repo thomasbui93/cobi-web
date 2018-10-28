@@ -6,6 +6,6 @@ export class FilterToggle extends FilterMultiSelect {
     this.setState({
       currentValue: value === this.state.currentValue[0] ? [] : [value]
     })
-    this.props.onChange(this.props.name, value)
+    this.props.onChange(this.props.name, this.state.currentValue.join(','))
   }
 }

@@ -2,7 +2,11 @@ $menu-list-width: 300px !default;
 
 .menu-item {
   &__list {
-    display: none;
+    display: block;
+    max-height: 0;
+    background: #efefef;
+    overflow: hidden;
+    transition: .5s max-height ease-in-out;
   }
 
   &__toggle {
@@ -27,7 +31,7 @@ $menu-list-width: 300px !default;
         font-weight: bold;
       }
       & + .menu-item__list {
-        display: block;
+        max-height: 100vh;
       } 
     }
 
@@ -43,6 +47,11 @@ $menu-list-width: 300px !default;
 
 @include tablet {
   .menu-item {
+    &__list {
+      max-height: none;
+      display: none;
+    }
+
     &__toggle {
       display: none;
     }

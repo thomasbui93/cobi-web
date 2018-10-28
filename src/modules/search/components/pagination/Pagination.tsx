@@ -11,7 +11,7 @@ export interface InterfacePaginationState {
 }
 
 export class Pagination extends React.Component<InterfacePaginationProps, InterfacePaginationState> {
-  public paginationSize: number = 2;
+  public paginationSize: number = 2
   public state: InterfacePaginationState = {
     paginationRange: this.getPaginationRange()
   }
@@ -64,18 +64,18 @@ export class Pagination extends React.Component<InterfacePaginationProps, Interf
   }
 
   public isEnableLeft(): boolean {
-    return this.state.paginationRange[0] > 1;
+    return this.state.paginationRange[0] > 1
   }
 
   public isEnableRight(): boolean {
-    return this.state.paginationRange[this.state.paginationRange.length - 1] < this.props.last;
+    return this.state.paginationRange[this.state.paginationRange.length - 1] < this.props.last
   }
 
   public updatePrev(): void {
     const paginationRange = this.state.paginationRange
     const largest = paginationRange[paginationRange.length-1] - this.paginationSize
     const smallest = paginationRange[0] - this.paginationSize
-    const range = this.getRange(Math.max(smallest, 1), largest);
+    const range = this.getRange(Math.max(smallest, 1), largest)
     this.setState({
       paginationRange: range
     })
@@ -85,7 +85,7 @@ export class Pagination extends React.Component<InterfacePaginationProps, Interf
     const paginationRange = this.state.paginationRange
     const largest = paginationRange[paginationRange.length-1] + this.paginationSize
     const smallest = paginationRange[0] + this.paginationSize
-    const range = this.getRange(smallest, Math.min(largest, this.props.last));
+    const range = this.getRange(smallest, Math.min(largest, this.props.last))
     this.setState({
       paginationRange: range
     })

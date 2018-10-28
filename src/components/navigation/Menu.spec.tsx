@@ -22,7 +22,7 @@ describe('Menu', () => {
       title: 'Menu 3',
       url: 'menu-3'
     }
-  ];
+  ]
   const menuItemsHasChildren = [
     {
       key: '1',

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Helmet } from 'react-helmet'
-import { Route, RouteProps } from 'react-router';
+import { Route, RouteProps } from 'react-router'
 
 export interface InterfacePageProps extends RouteProps {
   title: string,

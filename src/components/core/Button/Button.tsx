@@ -19,7 +19,6 @@ export class Button extends React.Component<InterfaceButtonProps> {
 
   public render() {
     return <button type={this.props.type}
-      className={`button ${this.props.className}`}
       disabled={this.props.disable} {...this.props}>
       {this.props.children}
       </button>

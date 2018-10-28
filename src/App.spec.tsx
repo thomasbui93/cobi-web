@@ -32,4 +32,4 @@ it('renders without crashing', () => {
       </MemoryRouter>
     </Provider>,
     div)
-});
+})
