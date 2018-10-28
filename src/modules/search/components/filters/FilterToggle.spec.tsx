@@ -27,8 +27,6 @@ describe('FilterToggle interaction', () => {
     const filter = mount(<FilterToggle {...mockOption}/>)
     const option = filter.find(FilterOptionItem).first()
     option.simulate('click')
-    expect(mock).toHaveBeenCalledWith('Filter Name', 'value_1')
-    option.simulate('click')
     expect(mock).toHaveBeenCalledWith('Filter Name', '')
   })
 })

@@ -17,7 +17,7 @@ import { updateQuery, getArrayOfQuery } from '../../../common/utils/query'
 import { push } from 'connected-react-router'
 import { Pagination } from '../components/pagination/Pagination'
 import { Button } from '../../../components/core/Button/Button'
-import { isAssociateArrayEqual } from 'src/common/utils/compare';
+import { isAssociateArrayEqual } from '../../../common/utils/compare';
 
 export enum FILTER_TYPE {
   TEXT = 'text',
