@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router'
 import { mount } from 'enzyme'
 
 import { Layout } from './Layout'
-import { Navigation } from '../navigation/Navigation';
+import { Navigation } from '../navigation/Navigation'
 
 describe('Layout', () => {
   it('should render successfully with suffient data', () => {
@@ -22,7 +22,7 @@ describe('Layout', () => {
         <Layout />
       </MemoryRouter>
     )
-    expect(layout.find(Navigation).length).toBe(1);
+    expect(layout.find(Navigation).length).toBe(1)
     expect(layout.find('.content').length).toBe(1)
   })
 })

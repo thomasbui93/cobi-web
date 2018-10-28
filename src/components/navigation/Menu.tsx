@@ -57,7 +57,7 @@ export class Menu extends React.Component<InterfaceMenuProps, InterfaceMenuState
   }
 
   public toggleMenuItem(key: string) {
-    const menuItems = this.state.menuItems;
+    const menuItems = this.state.menuItems
     menuItems[key] = !menuItems[key]
     this.setState({
       menuItems

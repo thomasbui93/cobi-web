@@ -2,7 +2,11 @@ $menu-list-width: 300px !default;
 
 .menu-item {
   &__list {
-    display: none;
+    display: block;
+    max-height: 0;
+    background: $smoke;
+    overflow: hidden;
+    transition: 0.5s max-height ease-in-out;
   }
 
   &__toggle {
@@ -22,15 +26,6 @@ $menu-list-width: 300px !default;
     padding: 0 1rem;
     position: relative;
 
-    &.is-active {
-      a {
-        font-weight: bold;
-      }
-      & + .menu-item__list {
-        display: block;
-      } 
-    }
-
     a,
     a:hover,
     a:visited {
@@ -38,11 +33,28 @@ $menu-list-width: 300px !default;
       line-height: $menu-item-height;
       color: black;
     }
+
+    &.is-active {
+
+      a {
+        font-weight: bold;
+      }
+
+      + .menu-item__list {
+        max-height: 100vh;
+      } 
+    }
   }
 }
 
 @include tablet {
   .menu-item {
+
+    &__list {
+      display: none;
+      max-height: none;
+    }
+
     &__toggle {
       display: none;
     }
@@ -52,14 +64,14 @@ $menu-list-width: 300px !default;
       height: $navigation-height;
       line-height: $navigation-height;
 
-      a:hover {
-        color: white;
-      }
-
       a,
       a:visited {
         color: hsla(0,0%,100%,.8);
         font-weight: 500;
+      }
+
+      a:hover {
+        color: $white;
       }
     }
 
@@ -71,7 +83,7 @@ $menu-list-width: 300px !default;
     }
 
     &:hover > &__link a {
-      color: white;
+      color: $white;
     }
   }
 }

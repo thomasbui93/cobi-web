@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { InterfaceMenuItem, getMenuItems } from '../../services/menu'
-import { Menu } from './Menu';
+import { Menu } from './Menu'
 
 export interface InterfaceNavigationProps {
   setNavigation: (isExpanded: boolean) => void,

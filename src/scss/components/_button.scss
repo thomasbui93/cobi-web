@@ -1,0 +1,39 @@
+.button {
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0;
+  display: -webkit-inline-box;
+  display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    height: 2.5rem;
+    padding: 0 1rem;
+    border-radius: 0;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in;
+    white-space: nowrap;
+    line-height: 16px;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+  &:focus {
+    outline: none;
+  }
+  
+  &--primary {
+    background-color: $primary;
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent;
+    color: #fff;
+  }
+}

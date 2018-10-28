@@ -1,0 +1,44 @@
+.filter {
+  &__title {
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    i {
+      transition: 0.3s transform ease-in-out;
+      z-index: -1;
+    }
+  }
+
+  &__content {
+    max-height: 0;
+    transition: 0.5s max-height ease-in-out;
+    overflow: hidden;
+  }
+
+  &__block {
+    display: flex;
+  }
+
+  &.is-active {
+    .filter__content {
+      max-height: 100vh;
+    }
+
+    .filter__title i {
+      transform: rotate(-180deg);
+    }
+  }
+
+  &-item__option {
+    line-height: 2rem;
+    cursor: pointer;
+    transition: 0.5s background-color ease-in-out;
+    padding-left: 1rem;
+    margin: 0.25rem 0;
+
+    &.is-active {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+  }
+}
