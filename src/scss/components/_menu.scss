@@ -4,7 +4,7 @@ $menu-list-width: 300px !default;
   &__list {
     display: block;
     max-height: 0;
-    background: #efefef;
+    background: $smoke;
     overflow: hidden;
     transition: .5s max-height ease-in-out;
   }
@@ -26,6 +26,14 @@ $menu-list-width: 300px !default;
     padding: 0 1rem;
     position: relative;
 
+    a,
+    a:hover,
+    a:visited {
+      height: $menu-item-height;
+      line-height: $menu-item-height;
+      color: black;
+    }
+
     &.is-active {
       a {
         font-weight: bold;
@@ -33,14 +41,6 @@ $menu-list-width: 300px !default;
       & + .menu-item__list {
         max-height: 100vh;
       } 
-    }
-
-    a,
-    a:hover,
-    a:visited {
-      height: $menu-item-height;
-      line-height: $menu-item-height;
-      color: black;
     }
   }
 }
@@ -61,14 +61,14 @@ $menu-list-width: 300px !default;
       height: $navigation-height;
       line-height: $navigation-height;
 
-      a:hover {
-        color: white;
-      }
-
       a,
       a:visited {
         color: hsla(0,0%,100%,.8);
         font-weight: 500;
+      }
+
+      a:hover {
+        color: $white;
       }
     }
 
@@ -80,7 +80,7 @@ $menu-list-width: 300px !default;
     }
 
     &:hover > &__link a {
-      color: white;
+      color: $white;
     }
   }
 }

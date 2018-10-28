@@ -7,9 +7,17 @@ $menu-item-height: 2.5rem !default;
   overflow: hidden;
   position: fixed;
 
+  &__content {
+    width: 100%;
+    height: calc(100vh - #{$navigation-height});
+    transform: translateX(0);
+    overflow-y: scroll;
+    background-color: white;
+  }
+
   &.is-collapsed {
     height: $navigation-height;
-    .navigation__content{
+    .navigation__content {
       transform: translateX(100%);
       transition: transform 0.1s ease-in-out;
     }
@@ -18,14 +26,6 @@ $menu-item-height: 2.5rem !default;
   &__header {
     height: $navigation-height;
     background-color: $primary;
-  }
-
-  &__content {
-    width: 100%;
-    height: calc(100vh - #{$navigation-height});
-    transform: translateX(0);
-    overflow-y: scroll;
-    background-color: white;
   }
 
   .toggle {
@@ -47,8 +47,8 @@ $menu-item-height: 2.5rem !default;
       display: none;
     }
 
-    &.is-collapsed .navigation__content,
-    .navigation__content {
+    .navigation__content,
+    &.is-collapsed .navigation__content {
       transform: none;
       display: flex;
       flex-direction: row;
