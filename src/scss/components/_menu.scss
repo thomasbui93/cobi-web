@@ -6,7 +6,7 @@ $menu-list-width: 300px !default;
     max-height: 0;
     background: $smoke;
     overflow: hidden;
-    transition: .5s max-height ease-in-out;
+    transition: 0.5s max-height ease-in-out;
   }
 
   &__toggle {
@@ -35,10 +35,12 @@ $menu-list-width: 300px !default;
     }
 
     &.is-active {
+
       a {
         font-weight: bold;
       }
-      & + .menu-item__list {
+
+      + .menu-item__list {
         max-height: 100vh;
       } 
     }
@@ -47,9 +49,10 @@ $menu-list-width: 300px !default;
 
 @include tablet {
   .menu-item {
+
     &__list {
-      max-height: none;
       display: none;
+      max-height: none;
     }
 
     &__toggle {

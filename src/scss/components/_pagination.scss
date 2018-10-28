@@ -4,11 +4,11 @@
   justify-content: center;
   width: 100%;
 
-  &-item {
+  .pagination-item {
     padding: 0.5rem;
     border: 1px solid $primary;
     text-align: center;
-    margin: .25rem;
+    margin: 0.25rem;
     height: 2rem;
     width: 2rem;
     cursor: pointer;

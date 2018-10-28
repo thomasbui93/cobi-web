@@ -8,15 +8,16 @@ $menu-item-height: 2.5rem !default;
   position: fixed;
 
   &__content {
-    width: 100%;
+    background-color: $white;
     height: calc(100vh - #{$navigation-height});
+    overflow-y: scroll; 
     transform: translateX(0);
-    overflow-y: scroll;
-    background-color: white;
+    width: 100%;
   }
 
   &.is-collapsed {
     height: $navigation-height;
+
     .navigation__content {
       transform: translateX(100%);
       transition: transform 0.1s ease-in-out;
@@ -34,6 +35,7 @@ $menu-item-height: 2.5rem !default;
     display: flex;
     height: 3rem;
     padding: 14px 10px 10px 10px;
+
     &.is-active {
       background-color: darken($color: $primary, $amount: 10%)
     }
@@ -58,4 +60,3 @@ $menu-item-height: 2.5rem !default;
     }
   }
 }
-  
