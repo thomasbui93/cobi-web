@@ -17,6 +17,7 @@ import { updateQuery, getArrayOfQuery } from '../../../common/utils/query'
 import { push } from 'connected-react-router'
 import { Pagination } from '../components/pagination/Pagination'
 import { Button } from '../../../components/core/Button/Button'
+import { isAssociateArrayEqual } from 'src/common/utils/compare';
 
 export enum FILTER_TYPE {
   TEXT = 'text',
@@ -37,15 +38,13 @@ export interface InterfaceFilteredListProps extends InterfaceFilterState, Interf
 
 export interface InterfaceFilterListState {
   appliedFilters: InputValueType[],
-  isOpen: boolean,
-  isAllowedRequest: boolean
+  isOpen: boolean
 }
 
 export class FilteredList extends React.Component<InterfaceFilteredListProps, InterfaceFilterListState>{
   public state: InterfaceFilterListState = {
     appliedFilters: [],
-    isOpen: false,
-    isAllowedRequest: false
+    isOpen: false
   }
 
   constructor(props: InterfaceFilteredListProps) {
@@ -54,14 +53,6 @@ export class FilteredList extends React.Component<InterfaceFilteredListProps, In
     this.setPaginate = this.setPaginate.bind(this)
     this.toggleMobilePanel = this.toggleMobilePanel.bind(this)
     this.applyAllFilters = this.applyAllFilters.bind(this)
-  }
-
-  public componentDidUpdate(prevProps: InterfaceFilteredListProps, prevState: InterfaceFilterListState) {
-    if (prevProps.isLoading !== this.props.isLoading) {
-      this.setState({
-        isAllowedRequest: false
-      })
-    }
   }
 
   public componentDidMount() {
@@ -79,16 +70,13 @@ export class FilteredList extends React.Component<InterfaceFilteredListProps, In
     if (appliedFilters[label] === value) {
       return
     }
-    if (typeof value === 'undefined') {
+    if (typeof value === 'undefined' || !value) {
       delete appliedFilters[label]
     } else {
       appliedFilters[label] = value
-      this.setState({
-        appliedFilters
-      })
     }
     this.setState({
-      isAllowedRequest: true
+      appliedFilters
     })
   }
 
@@ -97,6 +85,11 @@ export class FilteredList extends React.Component<InterfaceFilteredListProps, In
     this.setState({
       isOpen: false
     })
+  }
+
+  public isEnableFilterRequest() {
+    return !isAssociateArrayEqual(this.props.initialAppliedFilters, this.state.appliedFilters)
+      && !this.props.isLoading;
   }
 
   public renderFilter({ type, ...data }: InterfaceFilterItem) {
@@ -150,7 +143,7 @@ export class FilteredList extends React.Component<InterfaceFilteredListProps, In
             { this.props.filters.map(this.renderFilter.bind(this))}
           </div>
           <div className='filtered-list__bottom'>
-            <Button disabled={!this.state.isAllowedRequest} onClick={this.applyAllFilters}>Apply filter</Button>
+            <Button disabled={!this.isEnableFilterRequest()} onClick={this.applyAllFilters}>Apply filter</Button>
           </div>
         </div>
         <div className='filtered-list__content'>
