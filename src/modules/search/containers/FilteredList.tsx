@@ -16,6 +16,7 @@ import { InputValueType } from '../components/filters/InterfaceFilterState'
 import { updateQuery, getArrayOfQuery } from '../../../common/utils/query';
 import { push } from 'connected-react-router'
 import { Pagination } from '../components/pagination/Pagination';
+import { Button } from '../../../components/core/Button/Button';
 
 export enum FILTER_TYPE {
   TEXT = 'text',
@@ -35,18 +36,32 @@ export interface InterfaceFilteredListProps extends InterfaceFilterState, Interf
 }
 
 export interface InterfaceFilterListState {
-  appliedFilters: InputValueType[]
+  appliedFilters: InputValueType[],
+  isOpen: boolean,
+  isAllowedRequest: boolean
 }
 
 export class FilteredList extends React.Component<InterfaceFilteredListProps, InterfaceFilterListState>{
   public state: InterfaceFilterListState = {
-    appliedFilters: []
+    appliedFilters: [],
+    isOpen: false,
+    isAllowedRequest: false
   }
 
   constructor(props: InterfaceFilteredListProps) {
     super(props)
     this.applyFilter = this.applyFilter.bind(this)
     this.setPaginate = this.setPaginate.bind(this)
+    this.toggleMobilePanel = this.toggleMobilePanel.bind(this)
+    this.applyAllFilters = this.applyAllFilters.bind(this)
+  }
+
+  public componentDidUpdate(prevProps: InterfaceFilteredListProps, prevState: InterfaceFilterListState) {
+    if (prevProps.isLoading !== this.props.isLoading) {
+      this.setState({
+        isAllowedRequest: false
+      })
+    }
   }
 
   public componentDidMount() {
@@ -72,13 +87,22 @@ export class FilteredList extends React.Component<InterfaceFilteredListProps, In
         appliedFilters
       })
     }
-    this.props.applyFilter(appliedFilters)
+    this.setState({
+      isAllowedRequest: true
+    })
+  }
+
+  public applyAllFilters() {
+    this.props.applyFilter(this.state.appliedFilters)
+    this.setState({
+      isOpen: false
+    })
   }
 
   public renderFilter({ type, ...data }: InterfaceFilterItem) {
     const initialValue = this.props.initialAppliedFilters[data.name]
     const props = {
-      initialValue,
+      initialValue: initialValue ? initialValue : '',
       onChange: this.applyFilter,
       key: data.name
     }
@@ -102,21 +126,41 @@ export class FilteredList extends React.Component<InterfaceFilteredListProps, In
     return this.applyFilter('page', page)
   }
 
+  public toggleMobilePanel() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  }
+
   public render() {
     return (
-      <div className='filtered-list'>
-        <div className='filtered-list__panel'>
-          {this.props.filterError ? 'Error while getting filter' : ''}
-          {this.props.isFilterLoading ? 'Fetching filters...' : ''}
-          {this.props.filters.map(this.renderFilter.bind(this))}
+      <div className='filtered-list__wrapper container'>
+        <div className='filtered-list__header' onClick={this.toggleMobilePanel}>Filter Options</div>
+        <div className={`filtered-list__panel ${this.state.isOpen ? 'is-open': ''}`}>
+          <div className='filtered-list__mobile-head'>
+            <div className='filtered-list__mobile-title'>Filters</div>
+            <div className='filtered-list__mobile-close' onClick={this.toggleMobilePanel}>
+              <i className='material-icons'>close</i>
+            </div>
+          </div>
+          <div className='filtered-list__filters'>
+            { this.props.filterError ? 'Error while getting filter' : ''}
+            { this.props.isFilterLoading ? 'Fetching filters...' : ''}
+            { this.props.filters.map(this.renderFilter.bind(this))}
+          </div>
+          <div className='filtered-list__bottom'>
+            <Button disabled={!this.state.isAllowedRequest} onClick={this.applyAllFilters}>Apply filter</Button>
+          </div>
         </div>
-        <Pagination setPagination={this.setPaginate} current={this.props.page} last={this.props.total} />
-        <div className='filtered-list__list'>
-          {this.props.error ? 'Error while loading the search result' : ''}
-          {this.props.isLoading ? <Loader /> : ''}
-          {
-            this.props.items.map(item => <SearchItem item={item} key={item.key} />)
-          }
+        <div className='filtered-list__content'>
+          <div className='filtered-list'>
+            {this.props.error ? 'Error while loading the search result' : ''}
+            {this.props.isLoading ? <Loader /> : ''}
+            {
+              this.props.items.map(item => <SearchItem item={item} key={item.key} />)
+            }
+          </div>
+          <Pagination setPagination={this.setPaginate} current={this.props.page} last={this.props.total} />
         </div>
       </div>
     )

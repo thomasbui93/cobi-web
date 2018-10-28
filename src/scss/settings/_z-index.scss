@@ -1,0 +1,9 @@
+$indexs: 
+  content,
+  menu,
+  modal;
+
+@function z-index($key) {
+  @return index($indexs, $key)
+}
+  

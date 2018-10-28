@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { Button } from '../../../../components/core/Button/Button';
 
 export interface InterfaceFilterTextProps {
   label: string,
@@ -18,20 +17,23 @@ export class FilterText extends React.Component<InterfaceFilterTextProps> {
   }
 
   public onChange() {
-    if (this.inputValueRef.current && this.inputValueRef.current.value) {
+    if (this.inputValueRef.current && this.inputValueRef.current.value.length > 2) {
       this.props.onChange(this.props.name, this.inputValueRef.current.value)
     }
   }
 
   public render() {
     return (
-      <div className='filter--text'>
-        <div>{this.props.label}</div>
-        <input type='text'
-          ref={this.inputValueRef}
-          defaultValue={this.props.initialValue}
-          />
-        <Button onClick={this.onChange}>Apply</Button>
+      <div className='filter filter--text'>
+        <div className='filter__title'>{this.props.label}</div>
+        <div className='filter__block'>
+          <input type='text'
+            className='input--text'
+            ref={this.inputValueRef}
+            onChange={this.onChange}
+            defaultValue={this.props.initialValue}
+            />
+        </div>
       </div>
     )
   }

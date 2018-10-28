@@ -39,6 +39,10 @@
     humps "^2.0.1"
     prop-types "^15.5.10"
 
+"@ibm/plex@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@ibm/plex/-/plex-1.2.1.tgz#249c84fa26796af1b23937bc1537b0b05fb9ec2a"
+
 "@types/cheerio@*":
   version "0.22.9"
   resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.9.tgz#b5990152604c2ada749b7f88cab3476f21f39d7b"

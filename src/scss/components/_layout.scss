@@ -1,12 +1,13 @@
 .layout {
-  position: relative;
   display: flex;
 
   > .content {
-    position: relative;
     margin-top: $navigation-height;
-    padding: 1rem;
-    z-index: 0;
+    padding: .5rem;
     width: 100%;
   }
+}
+
+.container {
+  display: flex;
 }

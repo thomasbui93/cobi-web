@@ -34,6 +34,22 @@ export const searchApi = (requestInfo?: InputValueType[]) => {
             postCount: 10,
             lastEdit: new Date(),
             key: '3',
+          },
+          {
+            title: 'Category Title',
+            description: 'Category Description',
+            image: 'http://via.placeholder.com/150x150',
+            postCount: 10,
+            lastEdit: new Date(),
+            key: '4',
+          },
+          {
+            title: 'Category Title',
+            description: 'Category Description',
+            image: 'http://via.placeholder.com/150x150',
+            postCount: 10,
+            lastEdit: new Date(),
+            key: '5',
           }
         ]
       }) : reject({

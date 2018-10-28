@@ -1,5 +1,6 @@
 export type InputValueType = string | number | boolean;
 
 export interface InterfaceFilterState {
-  currentValue: InputValueType[]
+  currentValue: InputValueType[],
+  isOpen: boolean
 }

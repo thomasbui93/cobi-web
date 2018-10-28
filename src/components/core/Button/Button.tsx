@@ -12,14 +12,14 @@ export interface InterfaceButtonProps extends InterfaceButtonPropsStrict {
 
 export class Button extends React.Component<InterfaceButtonProps> {
   public static defaultProps: InterfaceButtonProps = {
-    className: 'btn--primary',
+    className: 'button button--primary',
     disabled: false,
     type: 'button'
   }
 
   public render() {
     return <button type={this.props.type}
-      className={`btn ${this.props.className}`}
+      className={`button ${this.props.className}`}
       disabled={this.props.disable} {...this.props}>
       {this.props.children}
       </button>
