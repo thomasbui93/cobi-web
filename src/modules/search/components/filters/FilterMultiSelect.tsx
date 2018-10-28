@@ -6,7 +6,7 @@ import { FilterOptionItem } from './FilterOptionItem'
 
 export class FilterMultiSelect extends React.Component<InterfaceFilterMultiProps, InterfaceFilterState> {
   public state:InterfaceFilterState = {
-    currentValue: this.props.initialValue.split(','),
+    currentValue: this.props.initialValue.length > 0 ? this.props.initialValue.split(',') : [],
     isOpen: true
   }
 
@@ -24,6 +24,7 @@ export class FilterMultiSelect extends React.Component<InterfaceFilterMultiProps
     })
     this.props.onChange(this.props.name, Array.from(currentValue).join(','))
   }
+
   public renderOption(option: InterfaceFilterOption) {
     return <FilterOptionItem 
       key={option.value}
@@ -31,6 +32,7 @@ export class FilterMultiSelect extends React.Component<InterfaceFilterMultiProps
       isActive={this.state.currentValue.indexOf(option.value) > -1}
       updateValue={this.onChange}/>
   }
+
   public toggleContent() {
     this.setState({
       isOpen: !this.state.isOpen

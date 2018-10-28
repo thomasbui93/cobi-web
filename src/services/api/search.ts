@@ -14,7 +14,7 @@ export const searchApi = (requestInfo?: InputValueType[]) => {
           {
             title: 'Category Title',
             description: 'Category Description',
-            image: 'http://via.placeholder.com/150x150',
+            image: 'https://picsum.photos/100/100/?random',
             postCount: 10,
             lastEdit: new Date(),
             key: '1',
@@ -22,7 +22,7 @@ export const searchApi = (requestInfo?: InputValueType[]) => {
           {
             title: 'Category Title',
             description: 'Category Description',
-            image: 'http://via.placeholder.com/150x150',
+            image: 'https://picsum.photos/100/100/?random',
             postCount: 10,
             lastEdit: new Date(),
             key: '2',
@@ -30,7 +30,7 @@ export const searchApi = (requestInfo?: InputValueType[]) => {
           {
             title: 'Category Title',
             description: 'Category Description',
-            image: 'http://via.placeholder.com/150x150',
+            image: 'https://picsum.photos/100/100/?random',
             postCount: 10,
             lastEdit: new Date(),
             key: '3',
@@ -38,7 +38,7 @@ export const searchApi = (requestInfo?: InputValueType[]) => {
           {
             title: 'Category Title',
             description: 'Category Description',
-            image: 'http://via.placeholder.com/150x150',
+            image: 'https://picsum.photos/100/100/?random',
             postCount: 10,
             lastEdit: new Date(),
             key: '4',
@@ -46,7 +46,7 @@ export const searchApi = (requestInfo?: InputValueType[]) => {
           {
             title: 'Category Title',
             description: 'Category Description',
-            image: 'http://via.placeholder.com/150x150',
+            image: 'https://picsum.photos/100/100/?random',
             postCount: 10,
             lastEdit: new Date(),
             key: '5',

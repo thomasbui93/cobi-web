@@ -123,7 +123,8 @@ export class FilteredList extends React.Component<InterfaceFilteredListProps, In
   }
 
   public setPaginate(page: number) {
-    return this.applyFilter('page', page)
+    this.applyFilter('page', page)
+    this.applyAllFilters()
   }
 
   public toggleMobilePanel() {
