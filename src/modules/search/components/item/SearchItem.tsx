@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
-export class SearchItem extends React.Component<any> {
+export class SearchItem extends React.PureComponent<any> {
   public render() {
     return (
       <div className='search-item' >

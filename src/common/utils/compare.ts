@@ -8,7 +8,7 @@ export const isAssociateArrayEqual = (arrayA: any[], arrayB: any[]): boolean => 
     return Object.keys(arrayB).length === 0;
   }
   arrayAKeys.forEach((key: string) => {
-    isEqual = (arrayA[key] === arrayB[key]) && isEqual
+    isEqual = (arrayA[key].toString() === arrayB[key].toString()) && isEqual
   })
 
   return isEqual;
