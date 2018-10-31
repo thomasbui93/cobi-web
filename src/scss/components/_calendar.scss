@@ -1,0 +1,33 @@
+$calendar-border: #333;
+$calendar-background: #fff;
+
+.calendar {
+  .calendar-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .date-cell {
+    flex-basis: (100%/7);
+    color: $calendar-border;
+    padding: 5px;
+    background-color: $calendar-background;
+    box-shadow: -1px -1px $calendar-border, 
+    inset -1px -1px 0 0 $calendar-border;
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      display: block;
+      padding-top: 100%;
+    }
+
+    .date-cell__content {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

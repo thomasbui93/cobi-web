@@ -5,6 +5,7 @@ import { Page } from './components/container/Page'
 import { setupIcon } from './services/icon'
 import { SearchPage } from './scences/SearchPage'
 import { NotFoundPage } from './components/static/NotFoundPage'
+import { CalendarEventPage } from './scences/CalendarEventsPage';
 
 setupIcon()
 
@@ -21,6 +22,9 @@ const App = () => (
           <Page title='Search'
             description='Seeking your information'
             path='/search' component={SearchPage} />
+          <Page title='Calendar Events'
+            description='Know your events'
+            path='/calendar-events' component={CalendarEventPage} />
           <Page title='Not found page'
             description='Sorry we could not found your page'
             component={NotFoundPage} />
